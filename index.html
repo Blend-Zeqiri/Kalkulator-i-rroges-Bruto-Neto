@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kalkulatori i Pagës (Kosovë)</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
 </head>
 <body>
-    
+
+<div class="calculator">
+    <h2>Kalkulatori Bruto ↔ Neto</h2>
+
+    <input type="number" id="amount" placeholder="Shkruaj shumën (€)">
+
+    <div class="buttons">
+        <button onclick="brutoNeNeto()">Bruto → Neto</button>
+        <button onclick="netoNeBruto()">Neto → Bruto</button>
+    </div>
+
+    <!-- <div class="container">
+        <div class="element"><p>Paga Bruto:</p> <span id="PagaBruto">€0.00</span></div>
+        <div class="element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+        <div id="result"></div>
+    </div> -->
+
+    <table>
+        <tr>
+            <td class="left">Paga Bruto</td>
+            <td class="right"><span id="PagaBruto">€0.00</span></td>
+        </tr>
+        <tr>
+            <td>Kontributi Punetori</td>
+            <td><span id="KontributiPunetori">€0.00</span></td>   
+        </tr>
+    </table>
+
+    <div id="result"></div>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
