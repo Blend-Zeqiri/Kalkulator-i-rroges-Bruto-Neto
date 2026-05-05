@@ -26,12 +26,15 @@ input {
 button {
     padding: 10px;
     margin: 5px;
-    width: 45%;
     border: none;
     background: #007bff;
     color: white;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.buttons button {
+    width: 45%;
 }
 
 button:hover {
@@ -43,7 +46,13 @@ button:hover {
     font-weight: bold;
 }
 .plus-minus{
-    width: 15%;
+    width: auto;
+    min-width: 32px;
+    padding: 4px 8px;
+    margin: 0 2px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.9rem;
 }
 table{
     width:100%;
@@ -61,4 +70,34 @@ td:first-child {
 }
 td:last-child {
     text-align: right;
+}
+.label {
+    display: inline-block;
+    width: 160px;
+}
+.kontributi {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 50px;
+    min-width: 40px;
+    padding: 0 4px;
+    margin: 0 2px 0 80px;
+    display: inline-block;
+    font: inherit;
+    vertical-align: middle;
+    text-align: center;
+}
+#kontributi-punedhensi {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 50px;
+    min-width: 40px;
+    padding: 0 4px;
+    margin: 0 2px 0 80px;
+    display: inline-block;
+    font: inherit;
+    vertical-align: middle;
+    text-align: center;
 }
