@@ -23,7 +23,8 @@ function llogaritTatimin(Paga){
     };
 }
 
-function brutoToNeto(PagaBruto, kontributiPunetori, kontributiPunedhenesi){
+function brutoToNeto(){
+    let PagaBruto = parseFloat(document.getElementById("paga").value)
     let kontributiPunetori = PagaBruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
     let kontributiPunedhenesi = PagaBruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
     let pagaETatueshme = PagaBruto - kontributiPunetori;
@@ -61,3 +62,22 @@ function decrease(kontributi){
     kontributiBaze.value = value + "%";
 }
 
+
+document.getElementById("increase-punetori")
+  .addEventListener("click", function () {
+    increase("kontributi-punetori");
+  });
+
+document.getElementById("decrease-punetori")
+  .addEventListener("click", function () {
+    decrease("kontributi-punetori");
+  });
+document.getElementById("increase-punedhensi")
+  .addEventListener("click", function () {
+    increase("kontributi-punedhensi");
+  });
+
+document.getElementById("decrease-punedhensi")
+  .addEventListener("click", function () {
+    decrease("kontributi-punedhensi");
+  });
