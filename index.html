@@ -10,20 +10,12 @@
 <div class="calculator">
     <h2>Kalkulatori Bruto ↔ Neto</h2>
 
-    <input type="number" id="amount" placeholder="Shkruaj shumën (€)">
+    <input type="number" id="paga" placeholder="Shkruaj shumën (€)">
 
     <div class="buttons">
         <button onclick="brutoNeNeto()">Bruto → Neto</button>
         <button onclick="netoNeBruto()">Neto → Bruto</button>
     </div>
-
-    <!-- <div class="container">
-        <div class="element"><p>Paga Bruto:</p> <span id="PagaBruto">€0.00</span></div>
-        <div class="element"></div>
-        <div class="element"></div>
-        <div class="element"></div>
-        <div id="result"></div>
-    </div> -->
 
     <table>
         <tr>
@@ -56,18 +48,10 @@
         </tr>
         <tr>
             <td>
-                <span>Tatimi 0-80 €</span>
+                <span>Tatimi 0-250 €</span>
             </td>
             <td>
-                <span id="Tatimi0-80">€0.00</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Tatimi 80-250 €</span>
-            </td>
-            <td>
-                <span id="Tatimi80-250">€0.00</span>
+                <span id="Tatimi0-250">€0.00</span>
             </td>
         </tr>
         <tr>
@@ -102,8 +86,6 @@
                 <span id="PagaNeto">€0.00</span>
             </td>
     </table>
-
-    <div id="result"></div>
 </div>
 
 <script src="main.js"></script>
