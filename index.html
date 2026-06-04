@@ -12,9 +12,16 @@
 
     <input type="number" id="paga" placeholder="Shkruaj shumën (€)">
 
-    <div class="buttons">
-        <button onclick="brutoNeNeto()">Bruto → Neto</button>
-        <button onclick="netoNeBruto()">Neto → Bruto</button>
+    <div class="inputs">
+        <label>
+            Bruto → Neto
+            <input type="checkbox" name="BrutoToNeto" class="only-one" checked>
+        </label>
+
+        <label>
+            Neto → Bruto
+            <input type="checkbox" name="NetoToBruto" class="only-one">
+        </label>
     </div>
 
     <table>
