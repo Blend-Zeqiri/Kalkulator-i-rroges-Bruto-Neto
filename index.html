@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulatori i Pagës (Kosovë)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Kalkulatori Bruto ↔ Neto</h2>
+
+    <input type="number" id="paga" placeholder="Shkruaj shumën (€)">
+
+    <div class="inputs">
+        <label>
+            Bruto → Neto
+            <input type="checkbox" id="BrutoToNeto" class="only-one" checked>
+        </label>
+
+        <label>
+            Neto → Bruto
+            <input type="checkbox" id="NetoToBruto" class="only-one">
+        </label>
+    </div>
+
+    <table>
+        <tr>
+            <td class="left">Paga Bruto</td>
+            <td class="right"><span id="PagaBruto">€0.00</span></td>
+        </tr>
+        <tr>
+            <td><span class="label">Kontributi Punetori</span> 
+                <input type="text" id="kontributi-punetori" class="kontributi" readonly="readonly" value="5%">
+                <button id="increase-punetori" class="plus-minus">+</button>
+                <button id="decrease-punetori" class="plus-minus">-</button>
+            </td>
+            <td><span id="KontributiPunetori">€0.00</span></td>   
+        </tr>
+        <tr>
+            <td><span class="label">Kontributi Punedhensi</span> 
+                <input type="text" id="kontributi-punedhensi" class="kontributi" readonly="readonly" value="5%">
+                <button id="increase-punedhensi" class="plus-minus">+</button>
+                <button id="decrease-punedhensi" class="plus-minus">-</button>
+            </td>
+            <td><span id="KontributiPunedhensi">€0.00</span></td>   
+        </tr>
+        <tr>
+            <td>
+                <span>Paga e tatueshme</span>
+            </td>
+                <td>
+                    <span id="PagaETatueshme">€0.00</span>
+                </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Tatimi 0-250 €</span>
+            </td>
+            <td>
+                <span id="Tatimi0-250">€0.00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Tatimi 250-450 €</span>
+            </td>
+            <td>
+                <span id="Tatimi250-450">€0.00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Tatimi 450+ €</span>
+            </td>
+            <td>
+                <span id="Tatimi450+">€0.00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Tatimi total</span>
+            </td>
+            <td>
+                <span id="TatimiTotal">€0.00</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Paga Neto</span>
+            </td>
+            <td>
+                <span id="PagaNeto">€0.00</span>
+            </td>
+    </table>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
