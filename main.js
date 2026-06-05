@@ -24,66 +24,86 @@ function llogaritTatimin(Paga){
 
 }
 
-function brutoToNeto(){
-    let PagaBruto = parseFloat(document.getElementById("paga").value)
-  
-    let kontributiPunetori = PagaBruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
-    let kontributiPunedhenesi = PagaBruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
-    let pagaETatueshme = PagaBruto - kontributiPunetori;
+
+function brutoToNeto() {
+    let bruto = parseFloat(document.getElementById("paga").value);
+
+    if (!bruto || bruto < 0) {
+        updateUI({
+            bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
+            pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
+            tatimiTotal: 0, neto: 0
+        });
+        return;
+    }
+
+    let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
+    let kontributiPunedhensi = bruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
+
+    let pagaETatueshme = bruto - kontributiPunetori;
+
     const tatimi = llogaritTatimin(pagaETatueshme);
     const neto = pagaETatueshme - tatimi.tatimi;
-    if(PagaBruto >= 0){
-        document.getElementById("PagaBruto").textContent =`€${PagaBruto.toFixed(2)}`;
-        document.getElementById("KontributiPunetori").textContent =`€${kontributiPunetori.toFixed(2)}`;
-        document.getElementById("KontributiPunedhensi").textContent =`€${kontributiPunedhenesi.toFixed(2)}`;
-        document.getElementById("PagaETatueshme").textContent =`€${pagaETatueshme.toFixed(2)}`;
-        document.getElementById("Tatimi250-450").textContent =`€${tatimi.tatimi1.toFixed(2)}`;
-        document.getElementById("Tatimi450+").textContent =`€${tatimi.tatimi2.toFixed(2)}`;
-        document.getElementById("TatimiTotal").textContent =`€${tatimi.tatimi.toFixed(2)}`;
-        document.getElementById("PagaNeto").textContent =`€${neto.toFixed(2)}`;
-    }else{
-        document.getElementById("PagaBruto").textContent =`€0.00`;
-        document.getElementById("KontributiPunetori").textContent =`€0.00`;
-        document.getElementById("KontributiPunedhensi").textContent =`€0.00`;
-        document.getElementById("PagaETatueshme").textContent =`€0.00`;
-        document.getElementById("Tatimi250-450").textContent =`€0.00`;
-        document.getElementById("Tatimi450+").textContent =`€0.00`;
-        document.getElementById("TatimiTotal").textContent =`€0.00`;
-        document.getElementById("PagaNeto").textContent =`€0.00`;
-    };
 
-    
-    return{
-        KontributiPunetori : Number(kontributiPunetori.toFixed(2)),
-        pagaETatueshme : Number(pagaETatueshme.toFixed(2)),
-        Tatimi250to450: tatimi.tatimi1,
-        Tatimi450up : tatimi.tatimi2,
-        Tatimi : tatimi.tatimi,
-        PagaNeto : Number(neto.toFixed(2))
-    };
+    updateUI({
+        bruto,
+        kontributiPunetori,
+        kontributiPunedhensi,
+        pagaETatueshme,
+        tatimi1: tatimi.tatimi1,
+        tatimi2: tatimi.tatimi2,
+        tatimiTotal: tatimi.tatimi,
+        neto
+    });
 }
 
+function netoToBruto() {
+    let targetNeto = parseFloat(document.getElementById("paga").value);
 
-function netoToBruto(){
-    let PagaNeto = parseFloat(document.getElementById("paga").value)
+    if (!targetNeto || targetNeto < 0) {
+        updateUI({
+            bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
+            pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
+            tatimiTotal: 0, neto: 0
+        });
+        return;
+    }
+
+    let low = 0;
+    let high = targetNeto * 2;
+    let bruto = 0;
+
+    while (high - low > 0.01) {
+        bruto = (low + high) / 2;
+
+        let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
+        let pagaETatueshme = bruto - kontributiPunetori;
+
+        let tatimi = llogaritTatimin(pagaETatueshme);
+        let neto = pagaETatueshme - tatimi.tatimi;
+
+        if (neto < targetNeto) low = bruto;
+        else high = bruto;
+    }
+
+    let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
+    let kontributiPunedhensi = bruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
+    let pagaETatueshme = bruto - kontributiPunetori;
+
+    const tatimi = llogaritTatimin(pagaETatueshme);
+    const neto = targetNeto;
+
+    updateUI({
+        bruto,
+        kontributiPunetori,
+        kontributiPunedhensi,
+        pagaETatueshme,
+        tatimi1: tatimi.tatimi1,
+        tatimi2: tatimi.tatimi2,
+        tatimiTotal: tatimi.tatimi,
+        neto
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
-const Paga = document.getElementById("paga");
-
-Paga.addEventListener("input", function () {
-    brutoToNeto();
-});
-
 
 function increase(kontributi){
     const kontributiBaze = document.getElementById(kontributi);
@@ -105,42 +125,79 @@ function decrease(kontributi){
 }
 
 
-document.getElementById("increase-punetori")
-  .addEventListener("click", function () {
-    increase("kontributi-punetori");
-    brutoToNeto();
-  });
+function runCalculator(){
+  const BoxBrutoToNeto = document.getElementById("BrutoToNeto");
+  const BoxNetoToBruto = document.getElementById("NetoToBruto");
+    if (BoxBrutoToNeto.checked) {
+      brutoToNeto();
+    } else if (BoxNetoToBruto.checked){
+      netoToBruto();
+    }
+}
 
-document.getElementById("decrease-punetori")
-  .addEventListener("click", function () {
-    decrease("kontributi-punetori");
-    brutoToNeto();
-  });
-document.getElementById("increase-punedhensi")
-  .addEventListener("click", function () {
-    increase("kontributi-punedhensi");
-    brutoToNeto();
-  });
+function updateUI(data) {
+    const format = (v) => `€${Number(v).toFixed(2)}`;
 
-document.getElementById("decrease-punedhensi")
-  .addEventListener("click", function () {
-    decrease("kontributi-punedhensi");
-    brutoToNeto();
-  });
+    document.getElementById("PagaBruto").textContent = format(data.bruto);
+    document.getElementById("KontributiPunetori").textContent = format(data.kontributiPunetori);
+    document.getElementById("KontributiPunedhensi").textContent = format(data.kontributiPunedhensi);
+    document.getElementById("PagaETatueshme").textContent = format(data.pagaETatueshme);
+    document.getElementById("Tatimi250-450").textContent = format(data.tatimi1);
+    document.getElementById("Tatimi450+").textContent = format(data.tatimi2);
+    document.getElementById("TatimiTotal").textContent = format(data.tatimiTotal);
+    document.getElementById("PagaNeto").textContent = format(data.neto);
+}
+
+function bind(id, event, action) {
+    document.getElementById(id).addEventListener(event, () => {
+        action();
+        runCalculator();
+    });
+}
+
+
+bind("paga", "input", () => {});
+
+bind("increase-punetori", "click", () => increase("kontributi-punetori"));
+bind("decrease-punetori", "click", () => decrease("kontributi-punetori"));
+
+bind("increase-punedhensi", "click", () => increase("kontributi-punedhensi"));
+bind("decrease-punedhensi", "click", () => decrease("kontributi-punedhensi"));
+
 
 const checkboxes = document.querySelectorAll(".only-one");
 
+// ensure at least one is checked on load
+const ensureOneChecked = () => {
+    const anyChecked = [...checkboxes].some(cb => cb.checked);
+    if (!anyChecked && checkboxes.length > 0) {
+        checkboxes[0].checked = true;
+    }
+};
+
 checkboxes.forEach(box => {
     box.addEventListener("change", function () {
+
+        // if user tries to uncheck the ONLY checked one → prevent it
+        if (!this.checked) {
+            const anyOtherChecked = [...checkboxes].some(cb => cb.checked);
+            if (!anyOtherChecked) {
+                this.checked = true; // force it back on
+                return;
+            }
+        }
+
+        // if user checks one → uncheck all others
         if (this.checked) {
             checkboxes.forEach(other => {
-                if (other !== this) {
-                    other.checked = false;
-                }
+                if (other !== this) other.checked = false;
             });
         }
+
+        runCalculator();
     });
 });
 
-const BoxBrutoToNeto = document.getElementById("BrutoToNeto");
-const BoxNetoToBruto = document.getElementById("NetoToBruto");
+
+
+
