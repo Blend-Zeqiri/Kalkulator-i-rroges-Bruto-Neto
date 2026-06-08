@@ -17,9 +17,9 @@ function llogaritTatimin(Paga){
       }
       
       return {
-          tatimi1 : Number(tatimi1.toFixed(2)),
-          tatimi2 : Number(tatimi2.toFixed(2)),
-          tatimi : Number(tatimi.toFixed(2))
+          tatimi1,
+          tatimi2,
+          tatimi
       };
 
 }
@@ -40,7 +40,7 @@ function brutoToNeto() {
     let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
     let kontributiPunedhensi = bruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
 
-    let pagaETatueshme = bruto - kontributiPunetori;
+    let pagaETatueshme = bruto - kontributiPunetori.toFixed(2);
 
     const tatimi = llogaritTatimin(pagaETatueshme);
     const neto = pagaETatueshme - tatimi.tatimi;
@@ -77,18 +77,20 @@ function netoToBruto() {
         bruto = (low + high) / 2;
 
         let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
-        let pagaETatueshme = bruto - kontributiPunetori;
+        let pagaETatueshme = bruto - kontributiPunetori.toFixed(2);
 
         let tatimi = llogaritTatimin(pagaETatueshme);
         let neto = pagaETatueshme - tatimi.tatimi;
 
-        if (neto < targetNeto) low = bruto;
-        else high = bruto;
+        if (neto < targetNeto)
+            low = bruto;
+        else
+            high = bruto;
     }
 
     let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
     let kontributiPunedhensi = bruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
-    let pagaETatueshme = bruto - kontributiPunetori;
+    let pagaETatueshme = bruto - kontributiPunetori.toFixed(2);
 
     const tatimi = llogaritTatimin(pagaETatueshme);
     const neto = targetNeto;
@@ -120,8 +122,8 @@ function decrease(kontributi){
     let value = parseFloat(kontributiBaze.value);
     if(value > 5){
       value = value - 1;
-
-      kontributiBaze.value = value + "%";}
+      kontributiBaze.value = value + "%";
+    }
 }
 
 
