@@ -2,97 +2,109 @@
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulatori i Pagës (Kosovë)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="calculator">
-    <h2>Kalkulatori Bruto ↔ Neto</h2>
+<div class="page">
+    <header class="header">
+        <div class="header-icon" aria-hidden="true">€</div>
+        <div>
+            <h1>Kalkulatori Bruto ↔ Neto</h1>
+            <p class="subtitle">Llogarit pagën sipas ligjit të Kosovës</p>
+        </div>
+    </header>
 
-    <input type="number" id="paga" placeholder="Shkruaj shumën (€)">
+    <main class="calculator">
+        <section class="input-section">
+            <label class="input-label" for="paga">Shuma</label>
+            <div class="amount-input">
+                <span class="currency-symbol">€</span>
+                <input type="number" id="paga" placeholder="0.00" min="0" step="0.01">
+            </div>
 
-    <div class="inputs">
-        <label>
-            Bruto → Neto
-            <input type="checkbox" id="BrutoToNeto" class="only-one" checked>
-        </label>
+            <div class="mode-toggle" role="group" aria-label="Lloji i llogaritjes">
+                <label class="mode-option">
+                    <input type="checkbox" id="BrutoToNeto" class="only-one" checked>
+                    <span>Bruto → Neto</span>
+                </label>
+                <label class="mode-option">
+                    <input type="checkbox" id="NetoToBruto" class="only-one">
+                    <span>Neto → Bruto</span>
+                </label>
+            </div>
+        </section>
 
-        <label>
-            Neto → Bruto
-            <input type="checkbox" id="NetoToBruto" class="only-one">
-        </label>
-    </div>
+        <section class="breakdown">
+            <div class="breakdown-row highlight">
+                <span class="row-label">Paga Bruto</span>
+                <span class="row-value" id="PagaBruto">€0.00</span>
+            </div>
 
-    <table>
-        <tr>
-            <td class="left">Paga Bruto</td>
-            <td class="right"><span id="PagaBruto">€0.00</span></td>
-        </tr>
-        <tr>
-            <td><span class="label">Kontributi Punetori</span> 
-                <input type="text" id="kontributi-punetori" class="kontributi" readonly="readonly" value="5%">
-                <button id="increase-punetori" class="plus-minus">+</button>
-                <button id="decrease-punetori" class="plus-minus">-</button>
-            </td>
-            <td><span id="KontributiPunetori">€0.00</span></td>   
-        </tr>
-        <tr>
-            <td><span class="label">Kontributi Punedhensi</span> 
-                <input type="text" id="kontributi-punedhensi" class="kontributi" readonly="readonly" value="5%">
-                <button id="increase-punedhensi" class="plus-minus">+</button>
-                <button id="decrease-punedhensi" class="plus-minus">-</button>
-            </td>
-            <td><span id="KontributiPunedhensi">€0.00</span></td>   
-        </tr>
-        <tr>
-            <td>
-                <span>Paga e tatueshme</span>
-            </td>
-                <td>
-                    <span id="PagaETatueshme">€0.00</span>
-                </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Tatimi 0-250 €</span>
-            </td>
-            <td>
-                <span id="Tatimi0-250">€0.00</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Tatimi 250-450 €</span>
-            </td>
-            <td>
-                <span id="Tatimi250-450">€0.00</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Tatimi 450+ €</span>
-            </td>
-            <td>
-                <span id="Tatimi450+">€0.00</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Tatimi total</span>
-            </td>
-            <td>
-                <span id="TatimiTotal">€0.00</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Paga Neto</span>
-            </td>
-            <td>
-                <span id="PagaNeto">€0.00</span>
-            </td>
-    </table>
+            <section class="kontributi-section">
+                <div class="breakdown-row kontributi-row">
+                    <span class="row-label">Kontributi Punëtori</span>
+                    <div class="stepper">
+                        <button type="button" id="decrease-punetori" class="stepper-btn" aria-label="Ul kontributin e punëtorit">−</button>
+                        <input type="text" id="kontributi-punetori" class="stepper-value" readonly value="5%">
+                        <button type="button" id="increase-punetori" class="stepper-btn" aria-label="Rrit kontributin e punëtorit">+</button>
+                    </div>
+                    <span class="row-value deduction" id="KontributiPunetori">€0.00</span>
+                </div>
+
+                <div class="breakdown-row kontributi-row">
+                    <span class="row-label">Kontributi Punëdhënësi</span>
+                    <div class="stepper">
+                        <button type="button" id="decrease-punedhensi" class="stepper-btn" aria-label="Ul kontributin e punëdhënësit">−</button>
+                        <input type="text" id="kontributi-punedhensi" class="stepper-value" readonly value="5%">
+                        <button type="button" id="increase-punedhensi" class="stepper-btn" aria-label="Rrit kontributin e punëdhënësit">+</button>
+                    </div>
+                    <span class="row-value" id="KontributiPunedhensi">€0.00</span>
+                </div>
+            </section>
+
+            <div class="breakdown-row">
+                <span class="row-label">Paga e tatueshme</span>
+                <span class="row-value" id="PagaETatueshme">€0.00</span>
+            </div>
+
+            <div class="breakdown-divider">
+                <span>Tatimi mbi të ardhurat</span>
+            </div>
+
+            <div class="breakdown-row sub">
+                <span class="row-label">0 – 250 €</span>
+                <span class="row-value" id="Tatimi0-250">€0.00</span>
+            </div>
+            <div class="breakdown-row sub">
+                <span class="row-label">250 – 450 € <span class="rate">8%</span></span>
+                <span class="row-value deduction" id="Tatimi250-450">€0.00</span>
+            </div>
+            <div class="breakdown-row sub">
+                <span class="row-label">450+ € <span class="rate">10%</span></span>
+                <span class="row-value deduction" id="Tatimi450+">€0.00</span>
+            </div>
+
+            <div class="breakdown-row">
+                <span class="row-label">Tatimi total</span>
+                <span class="row-value deduction" id="TatimiTotal">€0.00</span>
+            </div>
+
+            <div class="breakdown-row result">
+                <span class="row-label">Paga Neto</span>
+                <span class="row-value" id="PagaNeto">€0.00</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Shkallët tatimore: 0% · 8% · 10%</p>
+    </footer>
 </div>
 
 <script src="main.js"></script>
