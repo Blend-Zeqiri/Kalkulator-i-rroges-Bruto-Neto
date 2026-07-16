@@ -130,11 +130,12 @@ function decrease(kontributi){
 function runCalculator(){
   const BoxBrutoToNeto = document.getElementById("BrutoToNeto");
   const BoxNetoToBruto = document.getElementById("NetoToBruto");
-    if (BoxBrutoToNeto.checked) {
-      brutoToNeto();
-    } else if (BoxNetoToBruto.checked){
-      netoToBruto();
-    }
+  BoxBrutoToNeto.checked ? brutoToNeto() : netoToBruto();  
+  // if (BoxBrutoToNeto.checked) {
+    //   brutoToNeto();
+    // } else if (BoxNetoToBruto.checked){
+    //   netoToBruto();
+    // }
 }
 
 function updateUI(data) {
