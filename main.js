@@ -1,4 +1,4 @@
-import negativeValue from "./negativeValueHelper";
+// import negativeValue from "./negativeValueHelper";
 
 function llogaritTatimin(Paga){
     let tatimi = 0;
@@ -26,6 +26,17 @@ function llogaritTatimin(Paga){
       };
 
 }
+function negativeValue(value) {
+     
+ if (!value) {
+        updateUI({
+            bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
+            pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
+            tatimiTotal: 0, neto: 0
+       })
+        return;
+    }
+}  
 
 
 function brutoToNeto() {
@@ -49,6 +60,7 @@ function brutoToNeto() {
 
     const tatimi = llogaritTatimin(pagaETatueshme);
     const neto = pagaETatueshme - tatimi.tatimi;
+    
 
     updateUI({
         bruto,
@@ -163,7 +175,6 @@ function bind(id, event, action) {
     });
 }
 
-export default updateUI
 
 bind("paga", "input", () => {});
 
@@ -186,7 +197,7 @@ const ensureOneChecked = () => {
 
 checkboxes.forEach(box => {
     box.addEventListener("change", function () {
-
+        
         // if user tries to uncheck the ONLY checked one → prevent it
         if (!this.checked) {
             const anyOtherChecked = [...checkboxes].some(cb => cb.checked);
@@ -206,6 +217,7 @@ checkboxes.forEach(box => {
         runCalculator();
     });
 });
+
 
 
 
