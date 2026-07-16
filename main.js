@@ -1,16 +1,19 @@
+import negativeValue from "./negativeValueHelper";
+
 function llogaritTatimin(Paga){
     let tatimi = 0;
     let tatimi1 = 0;
     let tatimi2 = 0;
 
+    let fullTime = 450.00;
       if (Paga <= 250.00) {
           tatimi = 0;
       }
-      else if (Paga <= 450.00) {
+      else if (Paga <= fullTime) {
           tatimi1 = (Paga - 250) * 0.08;
           tatimi = tatimi1;
       }
-      else if (Paga > 450.00) {
+      else if (Paga > fullTime) {
           tatimi1 = 200 * 0.08;
           tatimi2 = (Paga - 450) * 0.10;
           tatimi = tatimi1 + tatimi2;
@@ -27,16 +30,18 @@ function llogaritTatimin(Paga){
 
 function brutoToNeto() {
     let bruto = parseFloat(document.getElementById("paga").value);
-
-    if (!bruto || bruto < 0) {
-        updateUI({
-            bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
-            pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
-            tatimiTotal: 0, neto: 0
-        });
-        return;
-    }
-
+    // bruto = 0 / false
+    // bruto < 0 / false
+    // bruto < gg / true
+    // if (!bruto) {
+    //     updateUI({
+    //         bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
+    //         pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
+    //         tatimiTotal: 0, neto: 0
+    //     });
+    //     return;
+    // }
+    negativeValue(bruto);
     let kontributiPunetori = bruto * parseFloat(document.getElementById("kontributi-punetori").value) / 100;
     let kontributiPunedhensi = bruto * parseFloat(document.getElementById("kontributi-punedhensi").value) / 100;
 
@@ -60,15 +65,15 @@ function brutoToNeto() {
 function netoToBruto() {
     let targetNeto = parseFloat(document.getElementById("paga").value);
 
-    if (!targetNeto || targetNeto < 0) {
-        updateUI({
-            bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
-            pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
-            tatimiTotal: 0, neto: 0
-        });
-        return;
-    }
-
+    // if (!targetNeto) {
+    //     updateUI({
+    //         bruto: 0, kontributiPunetori: 0, kontributiPunedhensi: 0,
+    //         pagaETatueshme: 0, tatimi1: 0, tatimi2: 0,
+    //         tatimiTotal: 0, neto: 0
+    //     });
+    //     return;
+    // }
+    negativeValue(targetNeto);
     let low = 0;
     let high = targetNeto * 2;
     let bruto = 0;
@@ -130,11 +135,12 @@ function decrease(kontributi){
 function runCalculator(){
   const BoxBrutoToNeto = document.getElementById("BrutoToNeto");
   const BoxNetoToBruto = document.getElementById("NetoToBruto");
-    if (BoxBrutoToNeto.checked) {
-      brutoToNeto();
-    } else if (BoxNetoToBruto.checked){
-      netoToBruto();
-    }
+  BoxBrutoToNeto.checked ? brutoToNeto() :netoToBruto(); 
+    // if (BoxBrutoToNeto.checked) {
+    //   brutoToNeto();
+    // } else if (BoxNetoToBruto.checked){
+    //   netoToBruto();
+    // }
 }
 
 function updateUI(data) {
@@ -157,6 +163,7 @@ function bind(id, event, action) {
     });
 }
 
+export default updateUI
 
 bind("paga", "input", () => {});
 
