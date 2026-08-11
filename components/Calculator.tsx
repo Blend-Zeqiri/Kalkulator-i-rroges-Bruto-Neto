@@ -58,46 +58,63 @@ export default function Calculator() {
   const [employerRate, setEmployerRate] = useState(contributions.employerDefault);
   const result = useMemo(() => mode === "bruto-neto" ? fromGross(parseFloat(amount), workerRate, employerRate) : fromNet(parseFloat(amount), workerRate, employerRate), [amount, mode, workerRate, employerRate]);
 
-  return <main className="flex min-h-screen items-center justify-center px-4 py-6">
-    <div className="w-full max-w-[680px]">
-      <header className="mb-6 flex items-center gap-4">
-        <div className="grid size-[52px] shrink-0 place-items-center rounded-[14px] bg-gradient-to-br from-blue-800 to-blue-600 text-2xl font-bold text-white shadow-lg shadow-blue-600/25" aria-hidden>{currency.symbol}</div>
-        <div><h1 className="text-xl font-bold tracking-tight">{text.title}</h1><p className="mt-0.5 text-sm text-slate-500">{text.subtitle}</p></div>
+  return <main className="min-h-screen px-4 py-8 sm:px-6 lg:py-12">
+    <div className="mx-auto w-full max-w-5xl">
+      <header className="mb-8 flex items-center gap-4">
+        <div className="grid size-12 shrink-0 place-items-center rounded-2xl bg-slate-950 text-xl font-bold text-white shadow-xl shadow-slate-900/15" aria-hidden>{currency.symbol}</div>
+        <div><h1 className="text-2xl font-bold tracking-[-.03em] text-slate-950 sm:text-3xl">{text.title}</h1><p className="mt-1 text-sm text-slate-500 sm:text-base">{text.subtitle}</p></div>
       </header>
-      <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-        <div className="border-b border-slate-200 p-6">
-          <label htmlFor="paga" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">{text.amount}</label>
-          <div className="flex items-center overflow-hidden rounded-[10px] border-2 border-slate-200 bg-slate-50 focus-within:border-blue-600 focus-within:ring-4 focus-within:ring-blue-600/15">
-            <span className="pl-4 text-xl font-semibold text-slate-500">{currency.symbol}</span><input id="paga" type="number" inputMode="decimal" min={input.minimum} step={input.step} value={amount} onChange={e => setAmount(e.target.value)} placeholder={input.placeholder} className="w-full bg-transparent py-3.5 pl-2 pr-4 text-2xl font-semibold outline-none placeholder:text-slate-300" />
-          </div>
-          <div className="mt-4 flex gap-2 rounded-[10px] bg-slate-50 p-1" role="radiogroup" aria-label={text.calculationType}>
-            {modes.map(({ value, label }) => <button type="button" role="radio" aria-checked={mode === value} key={value} onClick={() => setMode(value)} className={`flex-1 rounded-lg px-3 py-2.5 text-sm transition ${mode === value ? 'bg-white font-semibold text-blue-600 shadow-sm' : 'font-medium text-slate-500'}`}>{label}</button>)}
+
+      <section className="grid overflow-hidden rounded-[28px] border border-white/80 bg-white shadow-[0_24px_70px_-24px_rgba(15,23,42,.28)] lg:grid-cols-[.9fr_1.1fr]">
+        <div className="relative overflow-hidden bg-slate-950 p-6 text-white sm:p-8 lg:p-10">
+          <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-indigo-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-20 size-64 rounded-full bg-cyan-400/10 blur-3xl" />
+          <div className="relative">
+            <div className="mb-8 flex gap-1 rounded-xl bg-white/7 p-1" role="radiogroup" aria-label={text.calculationType}>
+              {modes.map(({ value, label }) => <button type="button" role="radio" aria-checked={mode === value} key={value} onClick={() => setMode(value)} className={`flex-1 rounded-lg px-3 py-2.5 text-sm transition-all ${mode === value ? 'bg-white font-semibold text-slate-950 shadow-lg' : 'font-medium text-slate-400 hover:text-white'}`}>{label}</button>)}
+            </div>
+
+            <label htmlFor="paga" className="mb-3 block text-xs font-semibold uppercase tracking-[.16em] text-slate-400">{text.amount}</label>
+            <div className="flex items-center border-b border-white/20 pb-3 transition-colors focus-within:border-cyan-400">
+              <span className="text-3xl font-semibold text-cyan-400">{currency.symbol}</span><input id="paga" type="number" inputMode="decimal" min={input.minimum} step={input.step} value={amount} onChange={e => setAmount(e.target.value)} placeholder={input.placeholder} className="min-w-0 flex-1 bg-transparent pl-3 text-4xl font-bold tracking-tight text-white outline-none placeholder:text-slate-700 sm:text-5xl" />
+            </div>
+            <p className="mt-3 text-sm text-slate-400">{mode === "neto-bruto" ? text.netSalary : text.grossSalary}</p>
+
+            <div className="mt-10 rounded-2xl border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-[.14em] text-cyan-300">{mode === "neto-bruto" ? text.grossSalary : text.netSalary}</p>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">{formatMoney(mode === "neto-bruto" ? result.bruto : result.neto)}</p>
+              <div className="mt-5 h-1 overflow-hidden rounded-full bg-white/10"><div className="h-full w-2/3 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400" /></div>
+            </div>
           </div>
         </div>
-        <div className="py-2">
-          <div className="row bg-blue-50">
-            <span className="row-label">{mode === "neto-bruto" ? text.netSalary : text.grossSalary}</span>
-            <span className="row-value">{formatMoney(mode === "neto-bruto" ? result.neto : result.bruto)}</span>
-          </div>
-          <div className="space-y-3 py-1">
-            <div className="row relative"><span className="row-label">{text.workerContribution}</span><div className="absolute left-1/2 -translate-x-1/2"><Stepper value={workerRate} onChange={setWorkerRate} label={text.workerContribution.toLowerCase()} minimum={contributions.minimum} maximum={contributions.maximum} /></div><span className="row-value text-red-600">{formatMoney(result.worker)}</span></div>
-            <div className="row relative"><span className="row-label">{text.employerContribution}</span><div className="absolute left-1/2 -translate-x-1/2"><Stepper value={employerRate} onChange={setEmployerRate} label={text.employerContribution.toLowerCase()} minimum={contributions.minimum} maximum={contributions.maximum} /></div><span className="row-value">{formatMoney(result.employer)}</span></div>
-          </div>
-          <div className="row"><span className="row-label">{text.taxableSalary}</span><span className="row-value">{formatMoney(result.taxable)}</span></div>
-          <div className="px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-slate-500 sm:px-6">{text.incomeTax}</div>
+
+        <div className="bg-white p-2 sm:p-4 lg:p-6">
+          <div className="px-4 pb-3 pt-4"><p className="text-xs font-bold uppercase tracking-[.16em] text-slate-400">{text.calculationType}</p><p className="mt-1 text-lg font-bold text-slate-900">{mode === "neto-bruto" ? text.netSalary : text.grossSalary} → {mode === "neto-bruto" ? text.grossSalary : text.netSalary}</p></div>
+          <div className="row rounded-xl bg-indigo-50/80"><span className="row-label text-indigo-950">{mode === "neto-bruto" ? text.netSalary : text.grossSalary}</span><span className="row-value text-indigo-700">{formatMoney(mode === "neto-bruto" ? result.neto : result.bruto)}</span></div>
+          <div className="my-2 border-t border-slate-100" />
+
+          <ContributionRow label={text.workerContribution} value={result.worker} rate={workerRate} setRate={setWorkerRate} deduction />
+          <ContributionRow label={text.employerContribution} value={result.employer} rate={employerRate} setRate={setEmployerRate} />
+          <div className="row"><span className="row-label text-slate-600">{text.taxableSalary}</span><span className="row-value">{formatMoney(result.taxable)}</span></div>
+
+          <div className="mx-5 mt-3 border-t border-slate-100 pb-2 pt-5 text-xs font-bold uppercase tracking-[.16em] text-slate-400">{text.incomeTax}</div>
           {taxBrackets.map((bracket, index) => <TaxRow key={bracket.label} label={bracket.label} rate={bracket.rate ? `${bracket.rate}${text.percentSymbol}` : undefined} value={result.bracketTaxes[index]} deduction={bracket.rate > 0} />)}
-          <div className="row"><span className="row-label">{text.totalTax}</span><span className="row-value text-red-600">{formatMoney(result.tax)}</span></div>
-          <div className="mx-4 mb-4 mt-2 flex items-center justify-between rounded-[10px] bg-gradient-to-br from-blue-800 to-blue-600 px-5 py-[18px] text-white">
-            <span className="font-semibold text-white/90">{mode === "neto-bruto" ? text.grossSalary : text.netSalary}</span>
-            <span className="text-xl font-bold tabular-nums sm:text-2xl">{formatMoney(mode === "neto-bruto" ? result.bruto : result.neto)}</span>
-          </div>
+          <div className="mx-5 mt-2 border-t border-slate-100" />
+          <div className="row"><span className="row-label font-semibold">{text.totalTax}</span><span className="row-value text-rose-600">−{formatMoney(result.tax)}</span></div>
         </div>
       </section>
-      <footer className="mt-5 text-center text-xs text-slate-500">{text.taxRates}: {taxBrackets.map(({ rate }) => `${rate}${text.percentSymbol}`).join(text.rateSeparator)}</footer>
+      <footer className="mt-6 text-center text-xs font-medium text-slate-400">{text.taxRates}: {taxBrackets.map(({ rate }) => `${rate}${text.percentSymbol}`).join(text.rateSeparator)}</footer>
     </div>
   </main>;
 }
 
+function ContributionRow({ label, value, rate, setRate, deduction = false }: { label: string; value: number; rate: number; setRate: (value: number) => void; deduction?: boolean }) {
+  return <div className="row flex-wrap rounded-xl sm:flex-nowrap">
+    <div className="min-w-[150px] flex-1"><p className="row-label text-slate-600">{label}</p><p className={`mt-0.5 text-xs font-semibold ${deduction ? "text-rose-500" : "text-slate-400"}`}>{formatMoney(value)}</p></div>
+    <Stepper value={rate} onChange={setRate} label={label.toLowerCase()} minimum={contributions.minimum} maximum={contributions.maximum} />
+  </div>;
+}
+
 function TaxRow({ label, rate, value, deduction = false }: TaxRowProps) {
-  return <div className="row pl-6 sm:pl-9"><span className="text-sm text-slate-500">{label}{rate && <span className="ml-1 rounded bg-blue-50 px-1.5 py-0.5 text-xs font-semibold text-blue-600">{rate}</span>}</span><span className={`row-value ${deduction ? 'text-red-600' : ''}`}>{formatMoney(value)}</span></div>;
+  return <div className="row py-2.5"><span className="text-sm text-slate-500">{label}{rate && <span className="ml-2 rounded-md bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-600">{rate}</span>}</span><span className={`row-value ${deduction ? 'text-rose-600' : 'text-slate-400'}`}>{formatMoney(value)}</span></div>;
 }
