@@ -6,17 +6,16 @@
   * { @apply box-border; }
   html.dark body { @apply bg-slate-950; background-image: none; }
   body {
-    @apply min-h-screen bg-slate-50 font-sans text-slate-900 antialiased;
-    background-image: radial-gradient(ellipse at 20% 0%, rgba(37,99,235,.06), transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(37,99,235,.04), transparent 50%);
+    @apply min-h-screen bg-[#eef2f7] font-sans text-slate-900 antialiased;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
 
 @layer components {
-  .row { @apply flex items-center justify-between gap-4 px-4 py-3 transition-colors hover:bg-blue-50/30 sm:px-6; }
+  .row { @apply flex items-center justify-between gap-4 py-3; }
   .row-label { @apply text-sm font-medium dark:text-slate-300; }
   .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums dark:text-slate-100; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900; }
-  .stepper-button { @apply grid size-[30px] place-items-center text-lg text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-600 disabled:cursor-default disabled:opacity-35 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-blue-300; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900; }
+  .stepper-button { @apply grid size-9 place-items-center text-base text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700 disabled:cursor-default disabled:opacity-25 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-300; }
 }
