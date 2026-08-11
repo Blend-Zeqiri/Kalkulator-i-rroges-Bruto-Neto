@@ -1,0 +1,37 @@
+{
+  "currency": { "symbol": "€", "decimals": 2 },
+  "contributions": { "minimumPercent": 5, "maximumPercent": 15, "stepPercent": 1 },
+  "taxBrackets": [
+    { "minimum": 0, "maximum": 250, "ratePercent": 0, "color": "bg-zinc-600" },
+    { "minimum": 250, "maximum": 450, "ratePercent": 8, "color": "bg-violet-500" },
+    { "minimum": 450, "maximum": null, "ratePercent": 10, "color": "bg-rose-500" }
+  ],
+  "text": {
+    "metaTitle": "Kalkulatori i Pagës (Kosovë)",
+    "metaDescription": "Llogarit pagën bruto dhe neto sipas ligjit të Kosovës",
+    "lawBadge": "Ligji i tatimit · Kosovë",
+    "title": "Kalkulatori Bruto ↔ Neto",
+    "subtitle": "Llogarit pagën sipas shkallëve tatimore aktuale",
+    "grossSalary": "Paga Bruto",
+    "netSalary": "Paga Neto",
+    "taxableSalary": "Paga e tatueshme",
+    "result": "Rezultati",
+    "grossToNet": "Bruto → Neto",
+    "netToGross": "Neto → Bruto",
+    "calculationType": "Lloji i llogaritjes",
+    "pensionContributions": "Kontributet pensionale",
+    "employeeContribution": "Kontributi Punëtori",
+    "employeeContributionSubtitle": "Zbritet nga paga bruto",
+    "decreaseEmployeeContribution": "Ul kontributin e punëtorit",
+    "increaseEmployeeContribution": "Rrit kontributin e punëtorit",
+    "employerContribution": "Kontributi Punëdhënësi",
+    "employerContributionSubtitle": "Paguar nga punëdhënësi",
+    "decreaseEmployerContribution": "Ul kontributin e punëdhënësit",
+    "increaseEmployerContribution": "Rrit kontributin e punëdhënësit",
+    "fromGross": "Nga bruto",
+    "forNet": "Për neto",
+    "incomeTax": "Tatimi mbi të ardhurat",
+    "totalTax": "Tatimi total",
+    "taxBrackets": "Shkallët tatimore të Kosovës"
+  }
+}
