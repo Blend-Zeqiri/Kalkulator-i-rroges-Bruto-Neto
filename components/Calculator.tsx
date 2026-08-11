@@ -78,7 +78,8 @@ export default function Calculator() {
   const outputLabel = mode === "neto-bruto" ? text.grossSalary : text.netSalary;
   const outputValue = mode === "neto-bruto" ? result.bruto : result.neto;
 
-  return <div className={darkMode ? "dark" : ""}>
+  return (
+  <div className={darkMode ? "dark" : ""}>
   <main className="min-h-screen bg-[#f3f0ea] px-4 py-6 text-[#172033] transition-colors dark:bg-[#0b1220] dark:text-slate-100 sm:px-6 sm:py-10">
     <div className="mx-auto w-full max-w-4xl">
       <header className="mb-10 flex items-start justify-between gap-6 border-b border-[#d9d6cf] pb-6 dark:border-slate-800">
@@ -139,7 +140,8 @@ export default function Calculator() {
       <footer className="mt-5 text-center text-xs text-[#9297a1] dark:text-slate-400">{text.subtitle}</footer>
     </div>
   </main>
-  </div>;
+  </div>
+  );
 }
 
 function CompactContribution({ label, rate, setRate }: Pick<ContributionRowProps, "label" | "rate" | "setRate">) {
