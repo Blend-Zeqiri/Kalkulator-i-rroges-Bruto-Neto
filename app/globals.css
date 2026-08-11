@@ -5,16 +5,16 @@
 @layer base {
   * { @apply box-border; }
   body {
-    @apply min-h-screen bg-[#f6f7f8] font-sans text-slate-950 antialiased;
+    @apply min-h-screen bg-[#f3f0ea] font-sans text-[#172033] antialiased;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
 
 @layer components {
-  .row { @apply flex items-center justify-between gap-4 py-3.5; }
-  .row-label { @apply text-sm font-medium text-slate-600; }
-  .row-value { @apply whitespace-nowrap text-sm font-semibold tabular-nums text-slate-950; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-lg border border-slate-200 bg-white; }
-  .stepper-button { @apply grid size-8 place-items-center text-base font-medium text-slate-500 transition-colors hover:bg-teal-50 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-teal-600 disabled:cursor-not-allowed disabled:opacity-30; }
+  .row { @apply flex items-center justify-between gap-4 py-3; }
+  .row-label { @apply text-sm text-[#697080]; }
+  .row-value { @apply whitespace-nowrap text-sm font-semibold tabular-nums text-[#172033]; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-md border border-[#d9d6cf] bg-[#faf9f6]; }
+  .stepper-button { @apply grid size-8 place-items-center text-base text-[#697080] transition-colors hover:bg-[#e8edf4] hover:text-[#1f3a5f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1f3a5f] disabled:cursor-default disabled:opacity-30; }
 }
