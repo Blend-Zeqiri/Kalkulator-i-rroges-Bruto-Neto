@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "title": "Kalkulatori i Pagës (Kosovë)",
+    "description": "Llogarit pagën bruto ose neto sipas shkallëve tatimore të Kosovës."
+  },
+  "locale": "sq",
+  "currency": {
+    "symbol": "€",
+    "decimalPlaces": 2
+  },
+  "input": {
+    "placeholder": "0.00",
+    "minimum": 0,
+    "step": 0.01
+  },
+  "calculation": {
+    "defaultMode": "bruto-neto",
+    "grossSearchMultiplier": 2,
+    "grossSearchMinimum": 1,
+    "iterations": 80
+  },
+  "text": {
+    "title": "Kalkulatori Bruto ↔ Neto",
+    "subtitle": "Llogarit pagën sipas ligjit të Kosovës",
+    "amount": "Shuma",
+    "calculationType": "Lloji i llogaritjes",
+    "grossSalary": "Paga Bruto",
+    "netSalary": "Paga Neto",
+    "workerContribution": "Kontributi Punëtori",
+    "employerContribution": "Kontributi Punëdhënësi",
+    "taxableSalary": "Paga e tatueshme",
+    "incomeTax": "Tatimi mbi të ardhurat",
+    "totalTax": "Tatimi total",
+    "taxRates": "Shkallët tatimore",
+    "decrease": "Ul",
+    "increase": "Rrit",
+    "minusSymbol": "−",
+    "plusSymbol": "+",
+    "percentSymbol": "%",
+    "rateSeparator": " · "
+  },
+  "modes": [
+    { "value": "bruto-neto", "label": "Bruto → Neto" },
+    { "value": "neto-bruto", "label": "Neto → Bruto" }
+  ],
+  "contributions": {
+    "minimum": 5,
+    "maximum": 15,
+    "workerDefault": 5,
+    "employerDefault": 5
+  },
+  "taxBrackets": [
+    { "label": "0 – 250 €", "minimum": 0, "maximum": 250, "rate": 0 },
+    { "label": "250 – 450 €", "minimum": 250, "maximum": 450, "rate": 8 },
+    { "label": "450+ €", "minimum": 450, "maximum": null, "rate": 10 }
+  ]
+}
