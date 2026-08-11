@@ -4,6 +4,7 @@
 
 @layer base {
   * { @apply box-border; }
+  html.dark body { @apply bg-[#0b1220]; }
   body {
     @apply min-h-screen bg-[#f3f0ea] font-sans text-[#172033] antialiased;
   }
@@ -13,8 +14,8 @@
 
 @layer components {
   .row { @apply flex items-center justify-between gap-4 py-3; }
-  .row-label { @apply text-sm text-[#697080]; }
-  .row-value { @apply whitespace-nowrap text-sm font-semibold tabular-nums text-[#172033]; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-md border border-[#d9d6cf] bg-[#faf9f6]; }
-  .stepper-button { @apply grid size-8 place-items-center text-base text-[#697080] transition-colors hover:bg-[#e8edf4] hover:text-[#1f3a5f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1f3a5f] disabled:cursor-default disabled:opacity-30; }
+  .row-label { @apply text-sm text-[#697080] dark:text-slate-300; }
+  .row-value { @apply whitespace-nowrap text-sm font-semibold tabular-nums text-[#172033] dark:text-slate-100; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-md border border-[#d9d6cf] bg-[#faf9f6] dark:border-slate-700 dark:bg-slate-900; }
+  .stepper-button { @apply grid size-8 place-items-center text-base text-[#697080] transition-colors hover:bg-[#e8edf4] hover:text-[#1f3a5f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1f3a5f] disabled:cursor-default disabled:opacity-30 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-300; }
 }
