@@ -19,6 +19,9 @@
     "grossSearchMinimum": 1,
     "iterations": 80
   },
+  "theme": {
+    "storageKey": "kosovo-tax-calculator-theme"
+  },
   "text": {
     "title": "Kalkulatori Bruto ↔ Neto",
     "subtitle": "Llogarit pagën sipas ligjit të Kosovës",
@@ -37,6 +40,10 @@
     "taxRates": "Shkallët tatimore",
     "decrease": "Ul",
     "increase": "Rrit",
+    "lightMode": "Modaliteti i ndritshëm",
+    "darkMode": "Modaliteti i errët",
+    "lightModeSymbol": "☀",
+    "darkModeSymbol": "☾",
     "minusSymbol": "−",
     "plusSymbol": "+",
     "percentSymbol": "%",
