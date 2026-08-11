@@ -53,6 +53,9 @@ export interface CalculatorData {
     grossSearchMinimum: number;
     iterations: number;
   };
+  theme: {
+    storageKey: string;
+  };
   text: Record<string, string>;
   modes: Array<{ value: CalculationMode; label: string }>;
   contributions: {
