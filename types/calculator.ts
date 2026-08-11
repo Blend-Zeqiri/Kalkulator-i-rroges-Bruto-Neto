@@ -25,6 +25,14 @@ export interface TaxRowProps {
   deduction?: boolean;
 }
 
+export interface ContributionRowProps {
+  label: string;
+  value: number;
+  rate: number;
+  setRate: (value: number) => void;
+  deduction?: boolean;
+}
+
 export interface TaxBracket {
   label: string;
   minimum: number;
