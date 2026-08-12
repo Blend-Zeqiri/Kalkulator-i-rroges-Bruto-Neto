@@ -4,9 +4,9 @@
 
 @layer base {
   * { @apply box-border; }
-  html.dark body { @apply bg-[#110f1b]; background-image: none; }
+  html.dark body { @apply bg-[#0b1114]; background-image: none; }
   body {
-    @apply min-h-screen bg-[#f2f0f8] font-sans text-[#242039] antialiased;
+    @apply min-h-screen bg-[#edf4f5] font-sans text-[#183036] antialiased;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
@@ -14,8 +14,8 @@
 
 @layer components {
   .row { @apply flex items-center justify-between gap-4 py-3; }
-  .row-label { @apply text-sm font-medium text-[#736d89] dark:text-[#c3bdd5]; }
-  .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums text-[#242039] dark:text-[#f5f2ff]; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-xl border border-[#ded9ea] bg-white dark:border-[#443d59] dark:bg-[#1b1728]; }
-  .stepper-button { @apply grid size-9 place-items-center text-base text-[#736d89] transition-colors hover:bg-[#eeeaff] hover:text-[#6650c8] disabled:cursor-default disabled:opacity-25 dark:text-[#b8b0ce] dark:hover:bg-[#302a42] dark:hover:text-[#c7b8ff]; }
+  .row-label { @apply text-sm font-medium text-[#657b80] dark:text-[#b9c8cc]; }
+  .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums text-[#183036] dark:text-[#f1f7f8]; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-xl border border-[#cfdde0] bg-white dark:border-[#34454a] dark:bg-[#121b1f]; }
+  .stepper-button { @apply grid size-9 place-items-center text-base text-[#657b80] transition-colors hover:bg-[#e3f3f5] hover:text-[#16869a] disabled:cursor-default disabled:opacity-25 dark:text-[#b9c8cc] dark:hover:bg-[#203036] dark:hover:text-[#71d7e8]; }
 }
