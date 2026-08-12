@@ -79,32 +79,32 @@ export default function Calculator() {
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <main className="min-h-screen bg-[#eef2f7] px-4 py-6 text-slate-900 transition-colors dark:bg-[#090d16] dark:text-slate-100 sm:px-6 sm:py-10">
+      <main className="min-h-screen bg-[#f2f0f8] px-4 py-6 text-[#242039] transition-colors dark:bg-[#110f1b] dark:text-[#f5f2ff] sm:px-6 sm:py-10">
         <div className="mx-auto w-full max-w-3xl">
           <header className="mb-7 flex items-center gap-3">
-            <div className="grid size-11 place-items-center rounded-2xl bg-blue-600 font-bold text-white" aria-hidden>{currency.symbol}</div>
-            <div className="min-w-0 flex-1"><h1 className="text-xl font-bold tracking-[-.025em] sm:text-2xl">{text.title}</h1><p className="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{text.subtitle}</p></div>
-            <button type="button" onClick={toggleTheme} aria-label={darkMode ? text.lightMode : text.darkMode} title={darkMode ? text.lightMode : text.darkMode} className="grid size-10 place-items-center rounded-xl border border-slate-200 bg-white text-lg text-blue-600 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 dark:hover:bg-slate-800"><span className="dark:hidden" aria-hidden>{text.darkModeSymbol}</span><span className="hidden dark:inline" aria-hidden>{text.lightModeSymbol}</span></button>
+            <div className="grid size-11 place-items-center rounded-2xl bg-[#6650c8] font-bold text-white" aria-hidden>{currency.symbol}</div>
+            <div className="min-w-0 flex-1"><h1 className="text-xl font-bold tracking-[-.025em] sm:text-2xl">{text.title}</h1><p className="mt-0.5 text-sm text-[#736d89] dark:text-[#b8b0ce]">{text.subtitle}</p></div>
+            <button type="button" onClick={toggleTheme} aria-label={darkMode ? text.lightMode : text.darkMode} title={darkMode ? text.lightMode : text.darkMode} className="grid size-10 place-items-center rounded-xl border border-[#ded9ea] bg-white text-lg text-[#6650c8] transition hover:bg-[#eeeaff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6650c8] dark:border-[#443d59] dark:bg-[#1b1728] dark:text-[#c7b8ff] dark:hover:bg-[#302a42]"><span className="dark:hidden" aria-hidden>{text.darkModeSymbol}</span><span className="hidden dark:inline" aria-hidden>{text.lightModeSymbol}</span></button>
           </header>
 
-          <section className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_20px_60px_-32px_rgba(15,23,42,.28)] dark:border-slate-800 dark:bg-[#111827] dark:shadow-none">
-            <div className="border-b border-slate-100 p-5 dark:border-slate-800 sm:p-7">
-              <div className="flex rounded-xl bg-slate-100 p-1 dark:bg-slate-950" role="radiogroup" aria-label={text.calculationType}>{modes.map(({ value, label }) => <button type="button" role="radio" aria-checked={mode === value} key={value} onClick={() => setMode(value)} className={`flex-1 rounded-lg px-3 py-2.5 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${mode === value ? 'bg-white font-semibold text-blue-700 shadow-sm dark:bg-slate-800 dark:text-blue-300' : 'font-medium text-slate-500 dark:text-slate-400'}`}>{label}</button>)}</div>
+          <section className="overflow-hidden rounded-[28px] border border-[#ded9ea] bg-white shadow-[0_20px_60px_-32px_rgba(54,42,90,.3)] dark:border-[#332d45] dark:bg-[#181421] dark:shadow-none">
+            <div className="border-b border-[#ebe7f2] p-5 dark:border-[#332d45] sm:p-7">
+              <div className="flex rounded-xl bg-[#f0edf6] p-1 dark:bg-[#0f0c17]" role="radiogroup" aria-label={text.calculationType}>{modes.map(({ value, label }) => <button type="button" role="radio" aria-checked={mode === value} key={value} onClick={() => setMode(value)} className={`flex-1 rounded-lg px-3 py-2.5 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6650c8] ${mode === value ? 'bg-white font-semibold text-[#6650c8] shadow-sm dark:bg-[#2a2439] dark:text-[#c7b8ff]' : 'font-medium text-[#736d89] dark:text-[#9f97b6]'}`}>{label}</button>)}</div>
               <div className="mt-7 grid min-w-0 gap-4 md:grid-cols-2">
-                <div className="min-w-0 rounded-2xl border border-slate-200 p-5 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-950/50"><label htmlFor="paga" className="text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400">{inputLabel}</label><div className="mt-2 flex min-w-0 items-baseline"><span className="text-2xl text-slate-400">{currency.symbol}</span><input id="paga" type="number" inputMode="decimal" min={input.minimum} step={input.step} value={amount} onChange={event => setAmount(event.target.value)} placeholder={input.placeholder} className="min-w-0 flex-1 bg-transparent pl-2 text-4xl font-semibold tracking-[-.04em] outline-none placeholder:text-slate-200 dark:text-white dark:placeholder:text-slate-700" /></div></div>
-                <div className="min-w-0 overflow-hidden rounded-2xl bg-blue-600 p-5 text-white dark:bg-blue-700"><p className="text-xs font-semibold uppercase tracking-[.12em] text-blue-100">{outputLabel}</p><p className="mt-3 break-all text-2xl font-bold tracking-[-.035em] tabular-nums sm:text-3xl">{formatMoney(outputValue)}</p></div>
+                <div className="min-w-0 rounded-2xl border border-[#ded9ea] p-5 focus-within:border-[#806bdc] focus-within:ring-4 focus-within:ring-[#806bdc]/10 dark:border-[#443d59] dark:bg-[#110e19]"><label htmlFor="paga" className="text-xs font-semibold uppercase tracking-[.12em] text-[#736d89] dark:text-[#a9a1bd]">{inputLabel}</label><div className="mt-2 flex min-w-0 items-baseline"><span className="text-2xl text-[#9992aa]">{currency.symbol}</span><input id="paga" type="number" inputMode="decimal" min={input.minimum} step={input.step} value={amount} onChange={event => setAmount(event.target.value)} placeholder={input.placeholder} className="min-w-0 flex-1 bg-transparent pl-2 text-4xl font-semibold tracking-[-.04em] outline-none placeholder:text-[#ded9ea] dark:text-white dark:placeholder:text-[#514961]" /></div></div>
+                <div className="min-w-0 overflow-hidden rounded-2xl bg-[#6650c8] p-5 text-white dark:bg-[#5944b5]"><p className="text-xs font-semibold uppercase tracking-[.12em] text-[#ddd6ff]">{outputLabel}</p><p className="mt-3 break-all text-2xl font-bold tracking-[-.035em] tabular-nums sm:text-3xl">{formatMoney(outputValue)}</p></div>
               </div>
             </div>
 
             <div className="p-5 sm:p-7">
               <div className="grid gap-3 sm:grid-cols-2"><ContributionCard label={text.workerContribution} value={result.worker} rate={workerRate} setRate={setWorkerRate} deduction /><ContributionCard label={text.employerContribution} value={result.employer} rate={employerRate} setRate={setEmployerRate} /></div>
               <div className="mt-7 grid gap-7 md:grid-cols-2">
-                <div><p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-400">{text.summary}</p><div className="divide-y divide-slate-100 dark:divide-slate-800"><ResultRow label={inputLabel} value={formatMoney(mode === "neto-bruto" ? result.neto : result.bruto)} /><ResultRow label={text.taxableSalary} value={formatMoney(result.taxable)} /><ResultRow label={text.totalTax} value={`−${formatMoney(result.tax)}`} /></div></div>
-                <div><p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-400">{text.incomeTax}</p><div className="rounded-2xl bg-slate-50 px-4 py-1 dark:bg-slate-950/60">{taxBrackets.map((bracket, index) => <TaxRow key={bracket.label} label={bracket.label} rate={bracket.rate ? `${bracket.rate}${text.percentSymbol}` : undefined} value={result.bracketTaxes[index]} deduction={bracket.rate > 0} />)}</div></div>
+                <div><p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-[#9992aa]">{text.summary}</p><div className="divide-y divide-[#ebe7f2] dark:divide-[#332d45]"><ResultRow label={inputLabel} value={formatMoney(mode === "neto-bruto" ? result.neto : result.bruto)} /><ResultRow label={text.taxableSalary} value={formatMoney(result.taxable)} /><ResultRow label={text.totalTax} value={`−${formatMoney(result.tax)}`} /></div></div>
+                <div><p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-[#9992aa]">{text.incomeTax}</p><div className="rounded-2xl bg-[#f5f3f9] px-4 py-1 dark:bg-[#110e19]">{taxBrackets.map((bracket, index) => <TaxRow key={bracket.label} label={bracket.label} rate={bracket.rate ? `${bracket.rate}${text.percentSymbol}` : undefined} value={result.bracketTaxes[index]} deduction={bracket.rate > 0} />)}</div></div>
               </div>
             </div>
           </section>
-          <footer className="mt-5 text-center text-xs text-slate-400 dark:text-slate-500">{text.taxRates}: {taxBrackets.map(({ rate }) => `${rate}${text.percentSymbol}`).join(text.rateSeparator)}</footer>
+          <footer className="mt-5 text-center text-xs text-[#9992aa] dark:text-[#777087]">{text.taxRates}: {taxBrackets.map(({ rate }) => `${rate}${text.percentSymbol}`).join(text.rateSeparator)}</footer>
         </div>
       </main>
     </div>
@@ -112,7 +112,7 @@ export default function Calculator() {
 }
 
 function ContributionCard({ label, value, rate, setRate, deduction = false }: { label: string; value: number; rate: number; setRate: (value: number) => void; deduction?: boolean }) {
-  return <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 p-4 dark:border-slate-700 dark:bg-slate-950/40"><div><p className="text-sm font-medium text-slate-700 dark:text-slate-200">{label}</p><p className={`mt-1 text-xs font-semibold ${deduction ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400'}`}>{formatMoney(value)}</p></div><Stepper value={rate} onChange={setRate} label={label.toLowerCase()} minimum={contributions.minimum} maximum={contributions.maximum} /></div>;
+  return <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#ded9ea] p-4 dark:border-[#443d59] dark:bg-[#110e19]/60"><div><p className="text-sm font-medium text-[#4e485f] dark:text-[#e2ddef]">{label}</p><p className={`mt-1 text-xs font-semibold ${deduction ? 'text-[#c44b6c] dark:text-[#ff8cad]' : 'text-[#9992aa]'}`}>{formatMoney(value)}</p></div><Stepper value={rate} onChange={setRate} label={label.toLowerCase()} minimum={contributions.minimum} maximum={contributions.maximum} /></div>;
 }
 
 function ResultRow({ label, value }: { label: string; value: string }) {
@@ -120,5 +120,5 @@ function ResultRow({ label, value }: { label: string; value: string }) {
 }
 
 function TaxRow({ label, rate, value, deduction = false }: TaxRowProps) {
-  return <div className="row border-b border-slate-100 py-2.5 last:border-0 dark:border-slate-800"><span className="text-sm text-slate-500 dark:text-slate-300">{label}{rate && <span className="ml-2 rounded-md bg-white px-1.5 py-0.5 text-[10px] font-semibold text-blue-600 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-blue-300 dark:ring-slate-700">{rate}</span>}</span><span className={`row-value ${deduction ? 'text-rose-600 dark:text-rose-400' : 'text-slate-400 dark:text-slate-500'}`}>{formatMoney(value)}</span></div>;
+  return <div className="row border-b border-[#e7e3ef] py-2.5 last:border-0 dark:border-[#332d45]"><span className="text-sm text-[#736d89] dark:text-[#c3bdd5]">{label}{rate && <span className="ml-2 rounded-md bg-white px-1.5 py-0.5 text-[10px] font-semibold text-[#6650c8] ring-1 ring-[#ded9ea] dark:bg-[#211c2e] dark:text-[#c7b8ff] dark:ring-[#443d59]">{rate}</span>}</span><span className={`row-value ${deduction ? 'text-[#c44b6c] dark:text-[#ff8cad]' : 'text-[#aaa4b7] dark:text-[#777087]'}`}>{formatMoney(value)}</span></div>;
 }

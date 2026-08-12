@@ -4,9 +4,9 @@
 
 @layer base {
   * { @apply box-border; }
-  html.dark body { @apply bg-slate-950; background-image: none; }
+  html.dark body { @apply bg-[#110f1b]; background-image: none; }
   body {
-    @apply min-h-screen bg-[#eef2f7] font-sans text-slate-900 antialiased;
+    @apply min-h-screen bg-[#f2f0f8] font-sans text-[#242039] antialiased;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
@@ -14,8 +14,8 @@
 
 @layer components {
   .row { @apply flex items-center justify-between gap-4 py-3; }
-  .row-label { @apply text-sm font-medium dark:text-slate-300; }
-  .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums dark:text-slate-100; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900; }
-  .stepper-button { @apply grid size-9 place-items-center text-base text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-700 disabled:cursor-default disabled:opacity-25 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-300; }
+  .row-label { @apply text-sm font-medium text-[#736d89] dark:text-[#c3bdd5]; }
+  .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums text-[#242039] dark:text-[#f5f2ff]; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-xl border border-[#ded9ea] bg-white dark:border-[#443d59] dark:bg-[#1b1728]; }
+  .stepper-button { @apply grid size-9 place-items-center text-base text-[#736d89] transition-colors hover:bg-[#eeeaff] hover:text-[#6650c8] disabled:cursor-default disabled:opacity-25 dark:text-[#b8b0ce] dark:hover:bg-[#302a42] dark:hover:text-[#c7b8ff]; }
 }
