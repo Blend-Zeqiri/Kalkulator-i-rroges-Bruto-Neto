@@ -4,19 +4,18 @@
 
 @layer base {
   * { @apply box-border; }
-  html.dark body { @apply bg-slate-950; background-image: none; }
+  html.dark body { @apply bg-[#0d1522]; background-image: none; }
   body {
-    @apply min-h-screen bg-slate-50 font-sans text-slate-900 antialiased;
-    background-image: radial-gradient(ellipse at 20% 0%, rgba(37,99,235,.06), transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(37,99,235,.04), transparent 50%);
+    @apply min-h-screen bg-[#e9edf0] font-sans text-[#2f3b46] antialiased;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
 }
 
 @layer components {
-  .row { @apply flex items-center justify-between gap-4 px-4 py-3 transition-colors hover:bg-blue-50/30 sm:px-6; }
-  .row-label { @apply text-sm font-medium dark:text-slate-300; }
-  .row-value { @apply whitespace-nowrap text-[.95rem] font-semibold tabular-nums dark:text-slate-100; }
-  .stepper { @apply inline-flex items-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900; }
-  .stepper-button { @apply grid size-[30px] place-items-center text-lg text-slate-500 transition-colors hover:bg-blue-50 hover:text-blue-600 disabled:cursor-default disabled:opacity-35 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-blue-300; }
+  .row { @apply flex min-w-0 items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-blue-50/30 sm:gap-4 sm:px-6; }
+  .row-label { @apply text-sm font-medium text-[#6f7880] dark:text-[#c4d2e4]; }
+  .row-value { @apply min-w-0 break-all text-right text-[.9rem] font-semibold tabular-nums text-[#2f3b46] dark:text-[#f4f8ff] sm:whitespace-nowrap sm:text-[.95rem]; }
+  .stepper { @apply inline-flex items-center overflow-hidden rounded-lg border border-[#d3d9dd] bg-[#eef1f2] dark:border-[#40516a] dark:bg-[#182438]; }
+  .stepper-button { @apply grid size-9 place-items-center text-lg text-[#747e86] transition-colors hover:bg-[#e0e6e9] hover:text-[#536f8b] disabled:cursor-default disabled:opacity-35 dark:text-[#aebdd2] dark:hover:bg-[#24344d] dark:hover:text-[#8fc5ff] sm:size-[30px]; }
 }
